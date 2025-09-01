@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "05705d41-271a-4bd3-8f26-b49b59d8f8d0",
+		"name": "MorseApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45219542",
+		"_collection_link": "https://mm-8988617.postman.co/workspace/MM's-Workspace~6c763c72-144f-4d2d-8dfc-03ac58b51a43/collection/45219542-05705d41-271a-4bd3-8f26-b49b59d8f8d0?action=share&source=collection_link&creator=45219542"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const data = pm.response.json();\r",
+							"pm.environment.set(\"token\", data.token);\r",
+							"pm.environment.set(\"username\", data.username);\r",
+							"pm.environment.set(\"role\", data.role);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"morseUser\",\r\n  \"password\": \"12345\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/auth/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Translation - Text to Morse",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"inputText\": \"HELLO CF\",\r\n  \"direction\": \"TEXT_TO_MORSE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/translations",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"translations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Translation - Morse to Text",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"inputText\": \".... . .-.. .-.. --- / -.-. ..-.\",\r\n  \"direction\": \"MORSE_TO_TEXT\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/translations",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"translations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Translations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/translations",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"translations"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
