@@ -6,6 +6,8 @@ CREATE DATABASE IF NOT EXISTS morseapp
 -- App user 
 DROP USER IF EXISTS 'morseUser'@'localhost';
 CREATE USER 'morseUser'@'localhost' IDENTIFIED BY '12345';
+ALTER USER 'morseUser'@'localhost'
+  IDENTIFIED WITH mysql_native_password BY '12345';
 GRANT ALL PRIVILEGES ON morseapp.* TO 'morseUser'@'localhost';
 FLUSH PRIVILEGES;
 
