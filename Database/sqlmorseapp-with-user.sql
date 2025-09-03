@@ -11,7 +11,6 @@ FLUSH PRIVILEGES;
 
 USE morseapp;
 
--- Καθαρίζουμε πίνακες με σωστή σειρά λόγω FK
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `translations`;
 DROP TABLE IF EXISTS `users`;
